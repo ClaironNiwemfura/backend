@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
-import {createArticle, readArticle, readUser,createUser,updateUser,deleteUser} from "../controllers/articles.js"
+import {createArticle, readArticle, readUser,createUser,updateUser,deleteUser,updateArticle} from "../controllers/articles.js"
 
 import {myName,deleteName,putName} from "../controllers/names.js"
 
@@ -17,7 +17,7 @@ router.delete("/:duser",deleteUser);
 
 router.patch("/:articleId",updateArticle);
 
-router.delete("/delete/:articleId",deleteArticle);
+// router.delete("/delete/:articleId",deleteArticle);
 
 
 router.post("/:myName",myName);

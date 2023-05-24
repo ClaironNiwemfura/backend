@@ -2,6 +2,13 @@ import userModel from "../models/user.js"
 
 const createUser=async(req,res)=>{
     try{
+        const existingUser = await userModel.findOne({ email: req.body.email });
+        if (existingUser) {
+          return res.status(409).json({
+            message: 'User already exists',
+          });
+        }
+
         const userInstance =new userModel({
             names:req.body.names,
             email:req.body.email,

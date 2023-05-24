@@ -34,7 +34,7 @@ app.use("/api/v1/comment",comment)
 app.use("/api/v1/user",user)
 
 
-const port=4330;
+const port=3450;
 
 app.listen(port,()=>{
     console.log("the server is running on port "+port)

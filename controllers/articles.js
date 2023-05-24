@@ -109,16 +109,21 @@ const readArticlesLimited=async(req,res)=>{
     let limitation = range*page;
     let start= limitation-range;
 
-    let result = await ArticleModel.find({}).skip(start).limit
+    let result = await ArticleModel.find({_id:articleId}).skip(start).limit(range)
     res.status(200).json({
         message:"read successfully",
         error:null,
         data:result
     })
-  }
+  }  catch(error){
+    console.log("error occured"),
+    res.status(500).json({
+        message:"error occured"
+    })
+}
 }
 
-const updateArticle=(req,res)=>{
+const updateArticle= async(req,res)=>{
     const articleId=req.params.articleId;
     const updates=req.body;
     let found = await ArticleModel.find({_id:articleId});
@@ -141,4 +146,4 @@ const updateArticle=(req,res)=>{
         })
     }
 }
-export{createArticle,readArticle,readUser,createUser,updateUser,deleteUser,createArticlecontrols}
+export{createArticle,readArticle,readUser,createUser,updateUser,deleteUser,createArticlecontrols,updateArticle}
